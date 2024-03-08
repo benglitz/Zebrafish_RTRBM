@@ -10,7 +10,7 @@ References
 import torch
 import numpy as np
 from tqdm import tqdm
-from utils.lr_scheduler import get_lrs
+from ..utils.lr_scheduler import get_lrs
 
 
 class RTRBM(object):

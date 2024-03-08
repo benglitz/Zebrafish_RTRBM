@@ -5,8 +5,8 @@ Implementation of the Restricted Boltzmann Machine (RBM)
 import torch
 import numpy as np
 from tqdm import tqdm
-from utils.lr_scheduler import get_lrs
-from utils.funcs import reshape
+from ..utils.lr_scheduler import get_lrs
+from ..utils.data_methods import reshape
 
 
 class RBM(object):

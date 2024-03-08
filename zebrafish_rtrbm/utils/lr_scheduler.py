@@ -186,16 +186,3 @@ def linear_decay(n_epochs, max_lr=1e-3, min_lr=1e-5):
 
     lrs = np.linspace(max_lr, min_lr, n_epochs)
     return lrs.tolist()
-
-
-if __name__ == '__main__':
-    import matplotlib.pyplot as plt
-    n_epochs = 1000
-    start = 300
-    lr_c_range = 0.2
-    min_lr = 1e-3
-    max_lr = 1e-2
-    lrs = np.concatenate([get_lrs(mode='cyclic', n_epochs=start, min_lr=max_lr*(1-lr_c_range), max_lr=max_lr*(1+lr_c_range), stepsize=50),
-          get_lrs(mode='cyclic_annealing', min_lr=min_lr, max_lr=max_lr, n_epochs=n_epochs-start, stepsize=50)])
-    plt.plot(lrs)
-    plt.show()

@@ -7,3 +7,6 @@ This code base contains all model implementations and Jupyter notebooks accompan
 bioRxiv 2024.02.02.578570; doi: https://doi.org/10.1101/2024.02.02.578570
 
 **06/03/2024 - Code base is incomplete, updates will follow soon**
+
+## Installation ##
+

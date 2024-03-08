@@ -2,11 +2,8 @@ import torch
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils.funcs import cross_correlation, create_U_hat
-import sys
-from tqdm import tqdm
-
-from scipy.ndimage import convolve1d
+from zebrafish_rtrbm.utils.metrics import cross_correlation
+from zebrafish_rtrbm.utils.data_methods import create_U_hat
 
 
 class PoissonTimeShiftedData(object):
@@ -162,31 +159,10 @@ class PoissonTimeShiftedData(object):
 
         cross_corr = torch.zeros(t_cross_corr)
         for i in range(t_cross_corr):
-            cross_corr[i] = np.nanmean(cross_correlation(data=self.data[:, :, 0], time_shift=i, mode='Pearson'))  # mode=Correlate
+            cross_corr[i] = np.nanmean(cross_correlation(data=self.data[:, :, 0], time_shift=i, mode='Pearson'))
         axes[1, 2].plot(cross_corr)
         axes[1, 2].set_title('Pearson cross-correlation')
         axes[1, 2].set_xlabel('Time shift')
         axes[1, 2].set_ylabel('Cross-correlation')
 
         return axes
-
-
-if __name__ == '__main__':
-
-    n_h = 10
-    delay = 1
-
-    U_hat = create_U_hat(n_h) / 0.001  # / 0.36
-
-    int_range = [20, 30]  # interval range external input
-    fr_range = [0.3, 0.8]  # min and max firing rate of external input
-    std_range = [0.05, 0.1]  # width of gaussian shaped peaks
-
-    s = PoissonTimeShiftedData(
-        neurons_per_population=20,
-        n_populations=n_h, n_batches=1,
-        time_steps_per_batch=120,
-        delay=delay, U_hat=U_hat,
-        int_range=int_range, fr_range=fr_range, std_range=std_range)
-    axes = s.plot_stats(T=100)
-    plt.show()
