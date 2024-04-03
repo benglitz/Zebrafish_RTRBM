@@ -16,3 +16,6 @@ bioRxiv 2024.02.02.578570; doi: https://doi.org/10.1101/2024.02.02.578570
 7. Install jupyter notebook by running: `conda install jupyter`
 8. Install Pytorch by following install instructions at https://pytorch.org/get-started/locally/
 
+## Data availability ##
+
+All accompanying data necessary to replicate results is hosted at https://osf.io/tx2vz/?view_only=94cbae609ad64fb58340728ede721f89. Please note that, for storage-saving reasons, the RBM and RTRBM files for figure 3 have been converted to zip files, these files need to be unzipped before they can be used. Additionally, please keep the same file structure as found in the data repository in order to run the notebooks.
